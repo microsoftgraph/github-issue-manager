@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.2/schema.json",
+  "schema_version": "v2.2",
+  "name_for_human": "GitHub Issue Manager",
+  "description_for_human": "API to manage issues in a GitHub repository",
+  "namespace": "githubissuemanager",
+  "functions": [
+    {
+      "name": "AssignIssue",
+      "description": "Assigns users to an issue"
+    },
+    {
+      "name": "CloseIssue",
+      "description": "Closes an issue"
+    },
+    {
+      "name": "LabelIssue",
+      "description": "Adds labels to an issue"
+    },
+    {
+      "name": "UnassignIssue",
+      "description": "Unassigns users from an issue"
+    },
+    {
+      "name": "UnlabelIssue",
+      "description": "Removes labels from an issue"
+    }
+  ],
+  "runtimes": [
+    {
+      "type": "OpenApi",
+      "auth": {
+        "type": "ApiKeyPluginVault",
+        "reference_id": "${{FUNCTION_KEY_REGISTRATION_ID}}"
+      },
+      "spec": {
+        "url": "apiSpecificationFile/openapi.yaml"
+      },
+      "run_for_functions": [
+        "AssignIssue",
+        "CloseIssue",
+        "LabelIssue",
+        "UnassignIssue",
+        "UnlabelIssue"
+      ]
+    }
+  ],
+  "capabilities": {}
+}

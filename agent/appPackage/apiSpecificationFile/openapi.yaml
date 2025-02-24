@@ -1,0 +1,204 @@
+openapi: 3.0.1
+info:
+  title: GitHub issues management API
+  description: API to manage issues in a GitHub repository
+  version: 1.0.0
+servers:
+- url: ${{DEVTUNNEL_URL}}/api
+paths:
+  /AssignIssue/{issueNumber}:
+    post:
+      description: Assigns users to an issue
+      operationId: AssignIssue
+      x-openai-isConsequential: false
+      parameters:
+      - name: issueNumber
+        in: path
+        description: The issue number of the issue to assign
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateAssignmentsRequest'
+      responses:
+        '202':
+          description: No description
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Payload of ApiError
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiError'
+      security:
+      - function_key: []
+  /CloseIssue/{issueNumber}:
+    post:
+      description: Closes an issue
+      operationId: CloseIssue
+      x-openai-isConsequential: false
+      parameters:
+      - name: issueNumber
+        in: path
+        description: The issue number of the issue to close
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '202':
+          description: No description
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Payload of ApiError
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiError'
+      security:
+      - function_key: []
+  /LabelIssue/{issueNumber}:
+    post:
+      description: Adds labels to an issue
+      operationId: LabelIssue
+      x-openai-isConsequential: false
+      parameters:
+      - name: issueNumber
+        in: path
+        description: The issue number of the issue to label
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateLabelsRequest'
+      responses:
+        '202':
+          description: No description
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Payload of ApiError
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiError'
+      security:
+      - function_key: []
+  /UnassignIssue/{issueNumber}:
+    post:
+      description: Unassigns users from an issue
+      operationId: UnassignIssue
+      x-openai-isConsequential: false
+      parameters:
+      - name: issueNumber
+        in: path
+        description: The issue number of the issue to unassign
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateAssignmentsRequest'
+      responses:
+        '202':
+          description: No description
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Payload of ApiError
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiError'
+      security:
+      - function_key: []
+  /UnlabelIssue/{issueNumber}:
+    post:
+      description: Removes labels from an issue
+      operationId: UnlabelIssue
+      x-openai-isConsequential: false
+      parameters:
+      - name: issueNumber
+        in: path
+        description: The issue number of the issue to unlabel
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateLabelsRequest'
+      responses:
+        '202':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Payload of ApiError
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiError'
+      security:
+      - function_key: []
+components:
+  schemas:
+    updateAssignmentsRequest:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            type: string
+          description: An array of GitHub usernames to assign to or unassign from the issue
+      required:
+      - users
+    apiError:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The error code
+        message:
+          type: string
+          description: The error message to display to the user
+    updateLabelsRequest:
+      type: object
+      properties:
+        labels:
+          type: array
+          items:
+            type: string
+          description: An array of labels to add to or remove from the issue
+      required:
+      - labels
+  securitySchemes:
+    function_key:
+      type: apiKey
+      name: code
+      in: query

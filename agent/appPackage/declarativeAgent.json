@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.2/schema.json",
+  "version": "v1.2",
+  "name": "GitHub Issue Manager",
+  "description": "Declarative agent created with Teams Toolkit can assist user in calling APIs and retrieving responses",
+  "instructions": "$[file('instruction.txt')]",
+  "actions": [
+    {
+      "id": "action_1",
+      "file": "ai-plugin.json"
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "GraphConnectors",
+      "connections": [
+        {
+          "connection_id": "ghissuemanager"
+        }
+      ]
+    }
+  ],
+  "conversation_starters": [
+    {
+      "title": "Find new issues",
+      "text": "Show me the five most recently opened issues"
+    },
+    {
+      "title": "Close an issue",
+      "text": "Close issue #"
+    },
+    {
+      "title": "Add labels",
+      "text": "Add the label \"help wanted\" to issue #"
+    },
+    {
+      "title": "Remove labels",
+      "text": "Remove the label \"bug\" from issue #"
+    },
+    {
+      "title": "Assign an issue",
+      "text": "Assign the newest issue to"
+    },
+    {
+      "title": "Unassign an issue",
+      "text": "Unassign all users from issue #"
+    }
+  ]
+}
