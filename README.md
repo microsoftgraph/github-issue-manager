@@ -1,3 +1,16 @@
+<!--
+---
+page_type: sample
+description: This sample demonstrates how to use a Microsoft Graph connector, declarative agent, and an API plugin API to create to create an issue management agent for Microsoft 365 Copilot
+products:
+- ms-graph
+- github
+- microsoft-365-copilot
+languages:
+- csharp
+---
+-->
+
 # GitHub Issue Manager sample agent
 
 GitHub Issue Manager is a sample solution for extending Microsoft 365 Copilot. It combines multiple extensibility options to create a full solution for managing issues in a GitHub repository. This sample consists of:
