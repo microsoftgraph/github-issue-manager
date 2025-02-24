@@ -1,0 +1,36 @@
+{
+  "azureFunctions.deploySubpath": "src/bin/Release/net9.0/publish",
+  "azureFunctions.projectLanguage": "C#",
+  "azureFunctions.projectRuntime": "~4",
+  "debug.internalConsoleOptions": "neverOpen",
+  "azureFunctions.preDeployTask": "publish (functions)",
+  "cSpell.words": [
+    "buildtransitive",
+    "contentfiles",
+    "devtunnel",
+    "ghissuemanager",
+    "HMAC",
+    "HMACSHA",
+    "Inprogress",
+    "Markdig",
+    "MSRC",
+    "Refinable",
+    "sideload",
+    "stylecop",
+    "teamsapp",
+    "Unassigns",
+    "Unlabel"
+  ],
+  "cSpell.ignorePaths": [
+    "package-lock.json",
+    "node_modules",
+    "vscode-extension",
+    ".git/{info,lfs,logs,refs,objects}/**",
+    ".git/{index,*refs,*HEAD}",
+    ".vscode",
+    ".vscode-insiders",
+    ".gitignore",
+    "teamsapp*.yml"
+  ],
+  "azurite.location": ".azurite"
+}

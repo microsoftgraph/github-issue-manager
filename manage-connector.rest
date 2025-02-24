@@ -1,0 +1,5 @@
+### Initialize connector
+POST http://localhost:7071/api/Initialize
+
+### Delete connection
+POST http://localhost:7071/api/Initialize?operation=delete

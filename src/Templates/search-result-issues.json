@@ -1,0 +1,106 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.3",
+  "body": [
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "auto",
+          "verticalContentAlignment": "center",
+          "items": [
+            {
+              "type": "Image",
+              "url": "${icon}",
+              "size": "small",
+              "style": "person",
+              "altText": "${authorUrl}"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "verticalContentAlignment": "center",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "[${title}](${issueUrl}) #${issueNumber}",
+              "color": "accent",
+              "size": "medium",
+              "weight": "bolder",
+              "wrap": true,
+              "maxLines": 2
+            },
+            {
+              "type": "TextBlock",
+              "spacing": "none",
+              "text": "${repo}"
+            }
+          ],
+          "spacing": "medium"
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Image",
+              "url": "${statusIcon}",
+              "size": "auto",
+              "altText": "${state}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "${body}",
+              "wrap": true,
+              "maxLines": 3,
+              "height": "stretch",
+              "spacing": "medium"
+            },
+            {
+              "type": "TextBlock",
+              "text": "**Assignees:** ${assignees} | **Labels:** ${labels} ",
+              "height": "stretch"
+            }
+          ],
+          "spacing": "medium"
+        }
+      ]
+    },
+    {
+      "type": "ColumnSet",
+      "separator": true,
+      "columns": [
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Last updated: {{DATE(${updatedAt}, SHORT)}}, {{TIME(${updatedAt})}}",
+              "size": "small",
+              "isSubtle": true,
+              "spacing": "small",
+              "wrap": true,
+              "maxLines": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+}
