@@ -4,6 +4,7 @@
 using GitHubIssueManager.Functions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
 
 namespace GitHubIssueManager.Models;
 
@@ -24,5 +25,6 @@ public class WebhookMultiResponse(IActionResult httpResponse, GitHubIssueQueueEn
     /// <summary>
     /// Gets the HTTP response.
     /// </summary>
+    [HttpResult]
     public IActionResult HttpResponse => httpResponse;
 }
